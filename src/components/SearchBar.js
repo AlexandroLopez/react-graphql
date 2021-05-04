@@ -22,18 +22,21 @@ const Container = styled.div`
         border-radius: 5px;
         padding-right:15px;
         opacity: 1;
-        text-align: center;
+        text-align: left;
+        text-indent:40px;
         top: 515px;
+        border:none;
         height: 40px;
         background: #EFEFF2 0% 0% no-repeat padding-box;
-        border-radius: 5px;
+        border-radius: 3px;
         opacity: 1;
     }
     select{
         padding-right:15px;
-  
+        text-indent:40px;
+        border:none;
         background: #EFEFF2 0% 0% no-repeat padding-box;
-        border-radius: 5px;
+        border-radius: 3px;
         opacity: 1;
         text-align: center;
 
