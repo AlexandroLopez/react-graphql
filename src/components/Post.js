@@ -5,6 +5,7 @@ import { LOAD_POST } from '../graphQl/Queries';
 import styled from 'styled-components';
 import ArrowIcon from '../icons/right-arrow.png';
 import LeftArrowIcon from '../icons/left-arrow.png';
+import Comments from './Comments';
 
 const Container = styled.div`
     display: grid;
@@ -21,7 +22,7 @@ const Main = styled.div`
     margin-top:1rem;
     margin-bottom:1rem;
     border:2px solid blue;
-    height:1000px;
+    height:auto;
     padding:0.5rem;
   h1{
     padding-top:1rem;
@@ -74,11 +75,22 @@ img {
 `;
 
 const AuthorDiv = styled.div`
-height:5rem;
-background: #F7F7F8 0% 0% no-repeat padding-box;
-div{
-    /* border:2px solid red; */
-}
+    display: grid;
+    font-weight:400;
+    grid-template-columns: 50% 50%;
+    text-align:left;
+    justify-items:center;
+    padding:0.1rem;
+    height:5rem;
+    background: #F7F7F8 0% 0% no-repeat padding-box;
+    div{
+        border:2px solid red;
+        h6{
+            margin:0;
+            font-weight:700;
+            font-size:16px;
+        }
+    }
 `;
 
 const capitalizeFirst = (value) => value && value[0].toUpperCase() + value.slice(1);
@@ -112,10 +124,25 @@ const Post = () => {
                 </ActionsDiv>
                 <AuthorDiv>
                     <div>
-ZZ
+                    Author Name
+                    <div>
+                    <h6>John DOe</h6>
+                    </div>
+                    
+                    </div>
+
+                    <div>
+
+                   Address
+                   <div>
+                   <h6>John DOe</h6>
+                   </div>
+    
+
                     </div>
                 </AuthorDiv>
 
+            <Comments />
             </Main>
             <div>
 

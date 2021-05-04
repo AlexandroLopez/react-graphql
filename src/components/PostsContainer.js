@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_ALL_POSTS } from '../graphQl/Queries';
 import styled from 'styled-components';
 import PostCard from './PostCard';
+import PaginationComponent from './PaginationComponent';
 
 const Container = styled.div`
  display: grid;
@@ -15,12 +16,25 @@ const Container = styled.div`
 `;
 
 const PostsContainer = () => {
-    const { loading, data, error } = useQuery(GET_ALL_POSTS);
+    const [page, setPage ] = useState(1);
+
+    const handleNextPage =() => setPage(page+1);
+
+    const { loading, data, error } = useQuery(GET_ALL_POSTS, {variables:{
+        options: {
+            paginate: {
+              page: page,
+              limit: 5
+            }
+          }
+        }
+    });
 
     console.log(data, 'data');
     return (
         <Container>
             {data?.posts?.data?.map((post, index) => <PostCard key={index} index={index} post={post} />)}
+            <PaginationComponent />
         </Container>
     )
 }

@@ -29,7 +29,7 @@ h1{
     color: #FFFFFF;
     opacity: 1;
 }
-`; 
+`;
 
 const Home = () => {
     const {  data } = useQuery(GET_ALL_POSTS);
@@ -40,6 +40,7 @@ const Home = () => {
                 <h1>Posts found:{data?.posts?.data?.length || 11}</h1>
             </Container>
             <BodyContainer />
+        
         </HomeContainer>
     )
 }
