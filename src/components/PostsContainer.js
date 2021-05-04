@@ -38,12 +38,6 @@ const PostsContainer = () => {
 
     const handlePreviousPage = () => page > 1 && setPage(page - 1);
 
-    console.log(nextPageAvailable, 'jel jeste?')
-
-  
-
-    console.log(dataSize, 'data  seize posts container');
-    console.log(data, 'data');
     return (<>
         <Container>
             {data?.posts?.data?.map((post, index) => <PostCard key={index} index={index} post={post} />)}
