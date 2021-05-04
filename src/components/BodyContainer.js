@@ -5,11 +5,10 @@ import SearchBar from './SearchBar';
 
 
 const Container = styled.div`
-border:2px solid green;
 top: 0px;
 left: 0px;
 width: auto;
-height: 2277px;
+height: auto;
 background: #FFFFFF 0% 0% no-repeat padding-box;
 opacity: 1;
 `;

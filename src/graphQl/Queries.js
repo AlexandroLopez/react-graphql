@@ -6,6 +6,7 @@ query ($options: PageQueryOptions) {
         data {
             id
             title
+            body
         }
         meta {
             totalCount
