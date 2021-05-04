@@ -33,7 +33,7 @@ h1{
 
 const Home = () => {
     const {  data } = useQuery(GET_ALL_POSTS);
-    console.log(data, 'dataa')
+    
     return (
         <HomeContainer>
             <Container>

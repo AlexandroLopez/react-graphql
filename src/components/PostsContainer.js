@@ -16,26 +16,40 @@ const Container = styled.div`
 `;
 
 const PostsContainer = () => {
-    const [page, setPage ] = useState(1);
+    const [page, setPage] = useState(1);
 
-    const handleNextPage =() => setPage(page+1);
 
-    const { loading, data, error } = useQuery(GET_ALL_POSTS, {variables:{
-        options: {
-            paginate: {
-              page: page,
-              limit: 5
+
+    const { data } = useQuery(GET_ALL_POSTS, {
+        variables: {
+            options: {
+                paginate: {
+                    page: page || 1,
+                    limit: 5
+                }
             }
-          }
         }
     });
+   
+    const dataSize = data?.posts?.meta?.totalCount;
+    const nextPageAvailable = dataSize > page * 5;
 
+    const handleNextPage = () =>nextPageAvailable && setPage(page + 1);
+
+    const handlePreviousPage = () => page > 1 && setPage(page - 1);
+
+    console.log(nextPageAvailable, 'jel jeste?')
+
+  
+
+    console.log(dataSize, 'data  seize posts container');
     console.log(data, 'data');
-    return (
+    return (<>
         <Container>
             {data?.posts?.data?.map((post, index) => <PostCard key={index} index={index} post={post} />)}
-            <PaginationComponent />
         </Container>
+        <PaginationComponent page={page} maxPages={dataSize/5} handleNextPage={handleNextPage} handlePreviousPage={handlePreviousPage} />
+        </>
     )
 }
 

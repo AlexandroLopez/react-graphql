@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { LOAD_POST } from '../graphQl/Queries';
@@ -15,13 +15,11 @@ const Container = styled.div`
     grid-auto-rows:100%;
     gap: 1rem;
     height:auto;
-    border:2px solid red;
 `;
 
 const Main = styled.div`
     margin-top:1rem;
     margin-bottom:1rem;
-    border:2px solid blue;
     height:auto;
     padding:0.5rem;
   h1{
@@ -84,7 +82,6 @@ const AuthorDiv = styled.div`
     height:5rem;
     background: #F7F7F8 0% 0% no-repeat padding-box;
     div{
-        border:2px solid red;
         h6{
             margin:0;
             font-weight:700;
@@ -97,10 +94,12 @@ const capitalizeFirst = (value) => value && value[0].toUpperCase() + value.slice
 
 const Post = () => {
     const { id } = useParams();
+    const [postID, setPostID] = useState(id);
     const { data } = useQuery(LOAD_POST, {
         variables: { id }
     });
-    console.log(data, 'jedan post')
+
+    const handleNext = () =>setPostID(postID+1);
     return (
         <Container>
             <div>
@@ -117,32 +116,29 @@ const Post = () => {
                         Previous article
 
                     </Left>
-                    <Right>Next article
-                    <img src={ArrowIcon} ></img>
+                    <Right >Next article
+                    <img src={ArrowIcon} onClick={() =>handleNext()} ></img>
                     </Right>
 
                 </ActionsDiv>
                 <AuthorDiv>
                     <div>
-                    Author Name
+                        Author Name
                     <div>
-                    <h6>John DOe</h6>
-                    </div>
-                    
+                            <h6>John DOe</h6>
+                        </div>
+
                     </div>
 
                     <div>
-
-                   Address
+                        Address
                    <div>
-                   <h6>John DOe</h6>
-                   </div>
-    
-
+                            <h6>John DOe</h6>
+                        </div>
                     </div>
                 </AuthorDiv>
 
-            <Comments />
+                <Comments />
             </Main>
             <div>
 

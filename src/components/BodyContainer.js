@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PostsContainer from './PostsContainer';
 import SearchBar from './SearchBar';
 
-
 const Container = styled.div`
 top: 0px;
 left: 0px;
@@ -21,6 +20,5 @@ const BodyContainer = (props) => {
             <PostsContainer />
         </Container>
     )
-}
-
+};
 export default BodyContainer;
