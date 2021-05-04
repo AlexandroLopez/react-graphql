@@ -1,21 +1,25 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
-import { GET_ALL_POSTS } from '../graphQl/Queries';
 import styled from 'styled-components';
+import PostsContainer from './PostsContainer';
 import SearchBar from './SearchBar';
 
 
 const Container = styled.div`
-border:2px solid red;
+border:2px solid green;
+top: 0px;
+left: 0px;
+width: auto;
+height: 2277px;
+background: #FFFFFF 0% 0% no-repeat padding-box;
+opacity: 1;
 `;
 
 const BodyContainer = (props) => {
-    const  {loading, data, error } = useQuery(GET_ALL_POSTS);
-
-    console.log(data, 'data')
+ 
     return (
         <Container>
             <SearchBar />
+            <PostsContainer />
         </Container>
     )
 }
